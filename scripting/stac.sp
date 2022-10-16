@@ -103,11 +103,15 @@ public void OnPluginStart()
 {
     StopIncompatPlugins();
     StacLog("\n\n----> StAC version [%s] loaded\n", PLUGIN_VERSION);
-    DoStACGamedata();
+    // check if tf2, unload if not
+    if (GetEngineVersion() != Engine_TF2)
+    {
+        SetFailState("[VAC] This plugin is only supported for TF2! Aborting!");
+    }
 
     if (!AddCommandListener(OnAllClientCommands))
     {
-        SetFailState("Failed to AddCommandListener?");
+        SetFailState("[VAC] This plugin (and TF2 in general) does not support more than 33 players (32 + 1 for STV). Aborting!");
     }
 
     LoadTranslations("common.phrases");
@@ -237,22 +241,12 @@ public void OnGameFrame()
         return;
     }
 
-    if (tickspersec[0] < (tps / 2.0))
-    {
-        // don't bother printing again lol
-        if (GetEngineTime() - ServerLagWaitLength < timeSinceLagSpikeFor[0])
-        {
-            // silently refresh this var
-            timeSinceLagSpikeFor[0] = GetEngineTime();
-            return;
-        }
-        timeSinceLagSpikeFor[0] = GetEngineTime();
-
-        StacLog("Server framerate stuttered. Expected: ~%.1f, got %i.\nDisabling OnPlayerRunCmd checks for %.2f seconds.", tps, tickspersec[0], ServerLagWaitLength);
-        if (stac_debug.BoolValue)
-        {
-            PrintToImportant("{hotpink}[StAC]{white} Server framerate stuttered. Expected: {palegreen}~%.1f{white}, got {fullred}%i{white}.\nDisabling OnPlayerRunCmd checks for %f seconds.",
-            tps, tickspersec[0], ServerLagWaitLength);
+            StacLog("Server framerate stuttered. Expected: ~%.1f, got %i.\nDisabling OnPlayerRunCmd checks for %.2f seconds.", tps, tickspersec[0], ServerLagWaitLength);
+            if (DEBUG)
+            {
+                PrintToImportant("{hotpink}[VAC]{white} Server framerate stuttered. Expected: {palegreen}~%.1f{white}, got {fullred}%i{white}.\nDisabling OnPlayerRunCmd checks for %f seconds.",
+                tps, tickspersec[0], ServerLagWaitLength);
+            }
         }
     }
 }
