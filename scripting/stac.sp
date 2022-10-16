@@ -73,12 +73,12 @@ public void OnPluginStart()
     // check if tf2, unload if not
     if (GetEngineVersion() != Engine_TF2)
     {
-        SetFailState("[StAC] This plugin is only supported for TF2! Aborting!");
+        SetFailState("[VAC] This plugin is only supported for TF2! Aborting!");
     }
 
     if (MaxClients > TFMAXPLAYERS)
     {
-        SetFailState("[StAC] This plugin (and TF2 in general) does not support more than 33 players (32 + 1 for STV). Aborting!");
+        SetFailState("[VAC] This plugin (and TF2 in general) does not support more than 33 players (32 + 1 for STV). Aborting!");
     }
 
     LoadTranslations("common.phrases");
@@ -210,7 +210,7 @@ public void OnGameFrame()
             StacLog("Server framerate stuttered. Expected: ~%.1f, got %i.\nDisabling OnPlayerRunCmd checks for %.2f seconds.", tps, tickspersec[0], ServerLagWaitLength);
             if (DEBUG)
             {
-                PrintToImportant("{hotpink}[StAC]{white} Server framerate stuttered. Expected: {palegreen}~%.1f{white}, got {fullred}%i{white}.\nDisabling OnPlayerRunCmd checks for %f seconds.",
+                PrintToImportant("{hotpink}[VAC]{white} Server framerate stuttered. Expected: {palegreen}~%.1f{white}, got {fullred}%i{white}.\nDisabling OnPlayerRunCmd checks for %f seconds.",
                 tps, tickspersec[0], ServerLagWaitLength);
             }
         }
