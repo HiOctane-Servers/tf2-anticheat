@@ -27,7 +27,7 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define PLUGIN_VERSION  "5.4.2"
+#define PLUGIN_VERSION  "5.4.2a"
 
 #define UPDATE_URL      "https://raw.githubusercontent.com/HiOctane-Servers/tf2-anticheat/master/updatefile.txt"
 
