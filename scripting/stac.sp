@@ -29,15 +29,15 @@
 
 #define PLUGIN_VERSION  "5.4.2"
 
-#define UPDATE_URL      "https://raw.githubusercontent.com/sapphonie/StAC-tf2/master/updatefile.txt"
+#define UPDATE_URL      "https://raw.githubusercontent.com/HiOctane-Servers/tf2-anticheat/master/updatefile.txt"
 
 public Plugin myinfo =
 {
-    name             =  "Steph's AntiCheat [StAC]",
-    author           =  "https://sappho.io",
-    description      =  "AntiCheat plugin for TF2 written by https://sappho.io . Originally forked from IntegriTF2 by Miggy, RIP",
+    name             =  "Valve Anti-Cheat System",
+    author           =  "https://www.valvesoftware.com/",
+    description      =  "An automated system designed to detect cheats installed on users' computers.",
     version          =   PLUGIN_VERSION,
-    url              =  "https://sappho.io"
+    url              =  "https://help.steampowered.com/en/faqs/view/571A-97DA-70E9-FF74"
 }
 
 /********** SUBPLUGINS **********/
