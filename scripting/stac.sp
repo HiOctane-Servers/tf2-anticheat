@@ -103,15 +103,11 @@ public void OnPluginStart()
 {
     StopIncompatPlugins();
     StacLog("\n\n----> StAC version [%s] loaded\n", PLUGIN_VERSION);
-    // check if tf2, unload if not
-    if (GetEngineVersion() != Engine_TF2)
-    {
-        SetFailState("[VAC] This plugin is only supported for TF2! Aborting!");
-    }
+    DoStACGamedata();
 
     if (!AddCommandListener(OnAllClientCommands))
     {
-        SetFailState("[VAC] This plugin (and TF2 in general) does not support more than 33 players (32 + 1 for STV). Aborting!");
+        SetFailState("Failed to AddCommandListener?");
     }
 
     LoadTranslations("common.phrases");
